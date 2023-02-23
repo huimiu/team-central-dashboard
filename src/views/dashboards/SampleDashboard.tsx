@@ -1,18 +1,16 @@
 import { BaseDashboard } from "@microsoft/teamsfx-react";
+import { CSSProperties } from "react";
+import { sampleDashboardStyle } from "../styles/SampleDashboard.style";
 
 import ChartWidget from "../widgets/ChartWidget";
 import { ListWidget } from "../widgets/ListWidget";
 
-export default class SampleDashboard extends BaseDashboard {
-  protected rowHeights(): string | undefined {
-    return "1fr";
+export default class SampleDashboard extends BaseDashboard<any, any> {
+  protected styling(): CSSProperties | string {
+    return sampleDashboardStyle;
   }
 
-  protected columnWidths(): string | undefined {
-    return "4fr 6fr";
-  }
-
-  protected dashboardLayout(): undefined | JSX.Element {
+  protected layout(): JSX.Element | undefined {
     return (
       <>
         <ListWidget />

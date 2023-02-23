@@ -7,7 +7,7 @@ import {
   DataPie24Regular,
   MoreHorizontal32Regular,
 } from "@fluentui/react-icons";
-import { BaseWidget } from "@microsoft/teamsfx-react";
+import { BaseWidget, widgetStyle } from "@microsoft/teamsfx-react";
 
 import {
   chart1Points_30D,
@@ -23,7 +23,6 @@ import {
   pieIconStyle,
   timeSpanStyle,
 } from "../styles/ChartWidget.style";
-import { widgetStyle } from "@microsoft/teamsfx-react/build/cjs/BaseWidget";
 
 enum DayRange {
   Seven,
@@ -36,7 +35,7 @@ interface IChartWidgetState {
   chartProps: IChartProps;
 }
 
-export default class ChartWidget extends BaseWidget<IChartWidgetState> {
+export default class ChartWidget extends BaseWidget<any, IChartWidgetState> {
   async getData(): Promise<IChartWidgetState> {
     const chartPoints = [
       {
@@ -57,10 +56,10 @@ export default class ChartWidget extends BaseWidget<IChartWidgetState> {
     return { dayRange: DayRange.Seven, chartProps: chartData };
   }
 
-  headerContent(): JSX.Element | undefined {
-    const { headerContent, headerText } = widgetStyle;
+  header(): JSX.Element | undefined {
+    const { plentyHeader, headerText } = widgetStyle;
     return (
-      <div className={headerContent}>
+      <div className={plentyHeader}>
         <DataPie24Regular style={pieIconStyle()} />
         <Text className={headerText}>Your chart</Text>
         <Button icon={<MoreHorizontal32Regular />} appearance="transparent" />
@@ -68,7 +67,7 @@ export default class ChartWidget extends BaseWidget<IChartWidgetState> {
     );
   }
 
-  bodyContent(): JSX.Element | undefined {
+  body(): JSX.Element | undefined {
     return (
       <>
         <div>
@@ -130,7 +129,7 @@ export default class ChartWidget extends BaseWidget<IChartWidgetState> {
     );
   }
 
-  footerContent(): JSX.Element | undefined {
+  footer(): JSX.Element | undefined {
     return (
       <Button
         appearance="transparent"

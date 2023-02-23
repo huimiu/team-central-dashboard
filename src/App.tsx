@@ -22,12 +22,12 @@ import TermsOfUse from "./views/TermsOfUse";
  * of the app.
  */
 export default function App() {
-  const { loading, themeString, teamsUserCredential } = useTeamsUserCredential({
+  const { loading, themeString} = useTeamsUserCredential({
     initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL!,
     clientId: process.env.REACT_APP_CLIENT_ID!,
   });
   return (
-    <TeamsFxContext.Provider value={{ themeString, teamsUserCredential }}>
+    <TeamsFxContext.Provider value={{ themeString }}>
       <FluentProvider
         theme={
           themeString === "dark"
