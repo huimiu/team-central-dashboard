@@ -12,8 +12,8 @@ export const itemLayoutStyle = (): CSSProperties => ({
 
 export const dividerStyle = (): CSSProperties => ({
   marginBottom: "0.5rem",
-  marginLeft: "-2.25rem",
-  marginRight: "-2.3rem",
+  marginLeft: "-2rem",
+  marginRight: "-2rem",
   height: "1px",
   background: tokens.colorNeutralStroke2,
 });
