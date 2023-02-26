@@ -7,8 +7,9 @@ import {
   DataPie24Regular,
   MoreHorizontal32Regular,
 } from "@fluentui/react-icons";
-import { BaseWidget, widgetStyle } from "@microsoft/teamsfx-react";
+import { BaseWidget } from "@microsoft/teamsfx-react";
 
+import { DayRange, TimeModel } from "../../models/chartModel";
 import {
   chart1Points_30D,
   chart1Points_60D,
@@ -16,23 +17,14 @@ import {
   chart2Points_30D,
   chart2Points_60D,
   chart2Points_7D,
+  getTimeRange,
 } from "../../services/chartService";
-import {
-  areaChartStyle,
-  footerButtonStyle,
-  pieIconStyle,
-  timeSpanStyle,
-} from "../styles/ChartWidget.style";
-
-enum DayRange {
-  Seven,
-  Thirty,
-  Sixty,
-}
+import { bodyStyle } from "../styles/ChartWidget.classNames";
 
 interface IChartWidgetState {
-  dayRange: DayRange;
+  selectedRange: DayRange;
   chartProps: IChartProps;
+  timeRange: TimeModel[];
 }
 
 export default class ChartWidget extends BaseWidget<any, IChartWidgetState> {
@@ -53,66 +45,44 @@ export default class ChartWidget extends BaseWidget<any, IChartWidgetState> {
       chartTitle: "Area chart multiple example",
       lineChartData: chartPoints,
     };
-    return { dayRange: DayRange.Seven, chartProps: chartData };
+    return { selectedRange: DayRange.Seven, chartProps: chartData, timeRange: getTimeRange() };
   }
 
   header(): JSX.Element | undefined {
-    const { plentyHeader, headerText } = widgetStyle;
     return (
-      <div className={plentyHeader}>
-        <DataPie24Regular style={pieIconStyle()} />
-        <Text className={headerText}>Your chart</Text>
+      <div>
+        <DataPie24Regular />
+        <Text>Your chart</Text>
         <Button icon={<MoreHorizontal32Regular />} appearance="transparent" />
       </div>
     );
   }
 
   body(): JSX.Element | undefined {
+    let { selector, chart } = bodyStyle;
     return (
-      <>
-        <div>
-          <ToggleButton
-            appearance="transparent"
-            checked={this.state.dayRange === DayRange.Seven}
-            style={timeSpanStyle()}
-            onClick={() =>
-              this.setState({
-                chartProps: this.retriveChartsData(DayRange.Seven),
-                dayRange: DayRange.Seven,
-              })
-            }
-          >
-            7 Days
-          </ToggleButton>
-          <ToggleButton
-            appearance="transparent"
-            checked={this.state.dayRange === DayRange.Thirty}
-            style={timeSpanStyle()}
-            onClick={() =>
-              this.setState({
-                chartProps: this.retriveChartsData(DayRange.Thirty),
-                dayRange: DayRange.Thirty,
-              })
-            }
-          >
-            30 Days
-          </ToggleButton>
-          <ToggleButton
-            appearance="transparent"
-            checked={this.state.dayRange === DayRange.Sixty}
-            style={timeSpanStyle()}
-            onClick={() =>
-              this.setState({
-                chartProps: this.retriveChartsData(DayRange.Sixty),
-                dayRange: DayRange.Sixty,
-              })
-            }
-          >
-            60 Days
-          </ToggleButton>
+      <div>
+        <div className={selector}>
+          {this.state.timeRange &&
+            this.state.timeRange.map((t: TimeModel, i) => {
+              return (
+                <ToggleButton
+                  appearance="transparent"
+                  checked={this.state.selectedRange === t.range}
+                  onClick={() =>
+                    this.setState({
+                      chartProps: this.retriveChartsData(t.range),
+                      selectedRange: t.range,
+                    })
+                  }
+                >
+                  {t.name}
+                </ToggleButton>
+              );
+            })}
         </div>
 
-        <div style={areaChartStyle()}>
+        <div className={chart}>
           {this.state.chartProps && (
             <AreaChart
               data={this.state.chartProps}
@@ -125,7 +95,7 @@ export default class ChartWidget extends BaseWidget<any, IChartWidgetState> {
             />
           )}
         </div>
-      </>
+      </div>
     );
   }
 
@@ -136,8 +106,6 @@ export default class ChartWidget extends BaseWidget<any, IChartWidgetState> {
         icon={<ArrowRight16Filled />}
         iconPosition="after"
         size="small"
-        style={footerButtonStyle()}
-        onClick={() => {}} // navigate to detailed page
       >
         View details
       </Button>

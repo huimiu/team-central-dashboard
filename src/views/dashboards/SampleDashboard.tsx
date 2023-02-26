@@ -1,6 +1,6 @@
 import { BaseDashboard } from "@microsoft/teamsfx-react";
 import { CSSProperties } from "react";
-import { sampleDashboardStyle } from "../styles/SampleDashboard.style";
+import { sampleDashboardStyle } from "../styles/SampleDashboard.classNames";
 
 import ChartWidget from "../widgets/ChartWidget";
 import { ListWidget } from "../widgets/ListWidget";

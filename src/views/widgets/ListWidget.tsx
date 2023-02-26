@@ -1,16 +1,10 @@
 import { Button, Text } from "@fluentui/react-components";
 import { List28Filled, MoreHorizontal32Regular } from "@fluentui/react-icons";
-import { BaseWidget, widgetStyle } from "@microsoft/teamsfx-react";
+import { BaseWidget } from "@microsoft/teamsfx-react";
 
 import { ListModel } from "../../models/listModel";
 import { getListData } from "../../services/listService";
-import {
-  bodyContentStyle,
-  dividerStyle,
-  itemLayoutStyle,
-  itemSubtitleStyle,
-  itemTitleStyle,
-} from "../styles/ListWidget.styles";
+import { bodyStyle } from "../styles/ListWidget.classNames";
 
 interface IListWidgetState {
   data: ListModel[];
@@ -33,11 +27,10 @@ export class ListWidget extends BaseWidget<any, IListWidgetState> {
    * @returns The header content, all ReactNode types are supported.
    */
   header(): JSX.Element | undefined {
-    const { plentyHeader, headerText } = widgetStyle;
     return (
-      <div className={plentyHeader}>
+      <div>
         <List28Filled />
-        <Text className={headerText}>Your List</Text>
+        <Text>Your List</Text>
         <Button icon={<MoreHorizontal32Regular />} appearance="transparent" />
       </div>
     );
@@ -49,20 +42,21 @@ export class ListWidget extends BaseWidget<any, IListWidgetState> {
    */
   body(): JSX.Element | undefined {
     return (
-      <div style={bodyContentStyle()}>
-        {this.state.data && this.state.data.map((t: ListModel) => {
-          return (
-            <div key={`${t.id}-div`} style={itemLayoutStyle()}>
-              <div key={`${t.id}-divider`} style={dividerStyle()} />
-              <Text key={`${t.id}-title`} style={itemTitleStyle()}>
-                {t.title}
-              </Text>
-              <Text key={`${t.id}-content`} style={itemSubtitleStyle()}>
-                {t.content}
-              </Text>
-            </div>
-          );
-        })}
+      <div className={bodyStyle}>
+        {this.state.data &&
+          this.state.data.map((t: ListModel) => {
+            return (
+              <div key={`${t.id}-div`}>
+                <div key={`${t.id}-divider`} className="divider" />
+                <Text key={`${t.id}-title`} className="title">
+                  {t.title}
+                </Text>
+                <Text key={`${t.id}-content`} className="content">
+                  {t.content}
+                </Text>
+              </div>
+            );
+          })}
       </div>
     );
   }
@@ -73,11 +67,7 @@ export class ListWidget extends BaseWidget<any, IListWidgetState> {
    */
   footer(): JSX.Element | undefined {
     return (
-      <Button
-        appearance="primary"
-        size="medium"
-        onClick={() => {}} // navigate to detailed page
-      >
+      <Button appearance="primary" size="medium">
         View Details
       </Button>
     );

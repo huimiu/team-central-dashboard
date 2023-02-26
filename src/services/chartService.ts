@@ -1,3 +1,13 @@
+import { DayRange, TimeModel } from "../models/chartModel";
+
+export function getTimeRange(): TimeModel[] {
+  return [
+    { range: DayRange.Seven, name: "7 days" },
+    { range: DayRange.Thirty, name: "30 days" },
+    { range: DayRange.Sixty, name: "60 days" },
+  ];
+}
+
 export const chart1Points_7D = [
   { x: new Date("2022/01/01"), y: 18000 },
   { x: new Date("2022/01/06"), y: 14000 },
