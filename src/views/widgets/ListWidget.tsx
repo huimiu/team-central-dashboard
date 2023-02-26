@@ -4,7 +4,7 @@ import { BaseWidget } from "@microsoft/teamsfx-react";
 
 import { ListModel } from "../../models/listModel";
 import { getListData } from "../../services/listService";
-import { bodyStyle } from "../styles/ListWidget.classNames";
+import { bodyStyle } from "../styles/ListWidget.style";
 
 interface IListWidgetState {
   data: ListModel[];

@@ -19,7 +19,7 @@ import {
   chart2Points_7D,
   getTimeRange,
 } from "../../services/chartService";
-import { bodyStyle } from "../styles/ChartWidget.classNames";
+import { bodyStyle } from "../styles/ChartWidget.style";
 
 interface IChartWidgetState {
   selectedRange: DayRange;
