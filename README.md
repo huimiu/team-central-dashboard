@@ -22,7 +22,7 @@ Learn more about the changes in this pre-release at [https://aka.ms/teamsfx-v5.0
 
 ## Introduction
 
-This is a Teams tab dashboard app that uses the [Fluent UI](https://react.fluentui.dev/?path=/docs/concepts-introduction--page) and the [Microsoft Graph API](https://learn.microsoft.com/en-us/graph/use-the-api) to display a user's profile information and recent Teams activity.
+This is a Teams tab app that uses the [Fluent UI](https://react.fluentui.dev/?path=/docs/concepts-introduction--page) to display multiple cards that provide an overview of data or content in Microsoft Teams.
 
 ![Default theme](./public/dashboard.png)
 
@@ -127,7 +127,7 @@ export const getSampleData = (): SampleModel => SampleData;
 
 ### Step 3: Create a widget file
 
-Create a widget file in `src/views/widgets` folder. Extend the [`BaseWidget`] class from `@microsoft/teamsfx-react`. The following table lists the methods that you can override to customize your widget.
+Create a widget file in `src/views/widgets` folder. Extend the `BaseWidget` class from [@microsoft/teamsfx-react](https://www.npmjs.com/package/@microsoft/teamsfx-react/v/3.0.1-alpha.ru6q1vrv0.0). The following table lists the methods that you can override to customize your widget.
 
 | Methods     | Function                                                                                                                                      |
 | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -146,9 +146,13 @@ import { BaseWidget } from "@microsoft/teamsfx-react";
 import { SampleModel } from "../../models/sampleModel";
 import { getSampleData } from "../../services/sampleService";
 
-export class SampleWidget extends Widget<any, SampleModel> {
-  async getData(): Promise<SampleModel> {
-    return getSampleData();
+interface SampleWidgetState {
+  data?: SampleModel;
+}
+
+export class SampleWidget extends BaseWidget<any, SampleWidgetState> {
+  async getData(): Promise<SampleWidgetState> {
+    return { data: getSampleData() };
   }
 
   header(): JSX.Element | undefined {
@@ -186,9 +190,15 @@ protected layout(): JSX.Element | undefined {
 }
 ```
 
-> Note: If you want put your widget in a column, you can use the [`oneColumn()`](src/views/lib/Dashboard.styles.ts#L32) method to define the column layout. Here is an example:
+> Note: If you want put your widget in a column, you can refer to the following code:
 
 ```tsx
+const oneColumn = mergeStyles({
+  display: "grid",
+  gap: "20px",
+  gridTemplateRows: "1fr 1fr",
+});
+
 protected dashboardLayout(): JSX.Element | undefined {
   return (
     <>
@@ -232,12 +242,11 @@ Here is an example to customize the dashboard layout.
 
 ```tsx
 export default class YourDashboard extends BaseDashboard {
-  protected rowHeights(): string | undefined {
-    return "500px";
-  }
-
-  protected columnWidths(): string | undefined {
-    return "4fr 6fr";
+  
+  protected styling(): CSSProperties | string {
+    return mergeStyles({
+      gridTemplateColumns: "4fr 6fr",
+    });
   }
 
   protected layout(): JSX.Element | undefined {

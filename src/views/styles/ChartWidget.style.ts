@@ -1,4 +1,4 @@
-import { mergeStyleSets } from "@fluentui/react";
+import { mergeStyles, mergeStyleSets } from "@fluentui/react";
 import { tokens } from "@fluentui/react-components";
 
 export const bodyStyle = mergeStyleSets({
@@ -6,6 +6,7 @@ export const bodyStyle = mergeStyleSets({
     display: "grid",
     gridTemplateColumns: "repeat(3, max-content)",
     gap: "1rem",
+    minWidth: "27rem",
     "& button": {
       fontSize: tokens.fontSizeBase100,
       lineHeight: tokens.lineHeightBase100,
@@ -16,4 +17,8 @@ export const bodyStyle = mergeStyleSets({
     height: "200px",
     width: "100%",
   },
+});
+
+export const footerStyle = mergeStyles({
+  color: "var(--colorBrandForeground1) !important",
 });

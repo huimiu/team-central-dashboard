@@ -31,10 +31,7 @@ export default function App() {
             ? teamsHighContrastTheme
             : teamsLightTheme
         }
-        style={{
-          height: "100vh",
-          background: tokens.colorNeutralBackground3,
-        }}
+        style={{ backgroundColor: tokens.colorTransparentBackground }}
       >
         <Router>
           <Route exact path="/">

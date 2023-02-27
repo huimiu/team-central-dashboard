@@ -19,7 +19,7 @@ import {
   chart2Points_7D,
   getTimeRange,
 } from "../../services/chartService";
-import { bodyStyle } from "../styles/ChartWidget.style";
+import { bodyStyle, footerStyle } from "../styles/ChartWidget.style";
 
 interface IChartWidgetState {
   selectedRange: DayRange;
@@ -103,6 +103,7 @@ export default class ChartWidget extends BaseWidget<any, IChartWidgetState> {
   footer(): JSX.Element | undefined {
     return (
       <Button
+        className={footerStyle}
         appearance="transparent"
         icon={<ArrowRight16Filled />}
         iconPosition="after"
