@@ -13,7 +13,6 @@
         "@microsoft/teams-js": "^2.7.1",
         "@microsoft/teamsfx": "^2.0.1",
         "@microsoft/teamsfx-react": "3.0.1-alpha.ru6q1vrv0.0",
-        "@react-hook/resize-observer": "^1.2.6",
         "react": "^16.14.0",
         "react-dom": "^16.14.0",
         "react-router-dom": "^5.1.2",
