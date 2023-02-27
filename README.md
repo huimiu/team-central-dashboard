@@ -135,6 +135,7 @@ Create a widget file in `src/views/widgets` folder. Inherit the `BaseWidget` cla
 | `header()`  | Customize the content of the widget header                                                                                                    |
 | `body()`    | Customize the content of the widget body                                                                                                      |
 | `footer()`  | Customize the content of the widget footer                                                                                                    |
+| `styling()` | Customize the widget style                                                                                                                    |
 
 > All methods are optional. If you do not override any method, the default widget layout will be used.
 
