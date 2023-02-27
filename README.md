@@ -127,7 +127,7 @@ export const getSampleData = (): SampleModel => SampleData;
 
 ### Step 3: Create a widget file
 
-Create a widget file in `src/views/widgets` folder. Extend the `BaseWidget` class from [@microsoft/teamsfx-react](https://www.npmjs.com/package/@microsoft/teamsfx-react/v/3.0.1-alpha.ru6q1vrv0.0). The following table lists the methods that you can override to customize your widget.
+Create a widget file in `src/views/widgets` folder. Inherit the `BaseWidget` class from [@microsoft/teamsfx-react](https://www.npmjs.com/package/@microsoft/teamsfx-react/v/3.0.1-alpha.ru6q1vrv0.0). The following table lists the methods that you can override to customize your widget.
 
 | Methods     | Function                                                                                                                                      |
 | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -164,11 +164,7 @@ export class SampleWidget extends BaseWidget<any, SampleWidgetState> {
   }
 
   footer(): JSX.Element | undefined {
-    return (
-      <Button appearance="primary" size="medium">
-        View Details
-      </Button>
-    );
+    return <Button>View Details</Button>;
   }
 }
 ```
@@ -203,7 +199,7 @@ protected dashboardLayout(): JSX.Element | undefined {
   return (
     <>
       <ListWidget />
-      <div style={oneColumn()}>
+      <div className={oneColumn()}>
         <ChartWidget />
         <SampleWidget />
       </div>
@@ -223,7 +219,7 @@ You can use the following steps to add a new dashboard layout:
 
 ### Step 1: Create a dashboard class
 
-Create a file with the extension `.tsx` for your dashboard in the `src/views/dashboards` directory. For example, `YourDashboard.tsx`. Then, create a class that extends the [BaseDashboard] class.
+Create a file with the extension `.tsx` for your dashboard in the `src/views/dashboards` directory, for example, `YourDashboard.tsx`. Then, define a class that inherits the `BaseDashboard` class from [@microsoft/teamsfx-react](https://www.npmjs.com/package/@microsoft/teamsfx-react/v/3.0.1-alpha.ru6q1vrv0.0).
 
 ```tsx
 export default class YourDashboard extends BaseDashboard<any, any> {}
@@ -241,8 +237,13 @@ Dashboard class provides some methods that you can override to customize the das
 Here is an example to customize the dashboard layout.
 
 ```tsx
-export default class YourDashboard extends BaseDashboard {
-  
+import { CSSProperties } from "react";
+import { mergeStyles } from "@fluentui/react";
+import { BaseDashboard } from "@microsoft/teamsfx-react";
+import ListWidget from "../widgets/ListWidget";
+import ChartWidget from "../widgets/ChartWidget";
+
+export default class YourDashboard extends BaseDashboard<any, any> {
   protected styling(): CSSProperties | string {
     return mergeStyles({
       gridTemplateColumns: "4fr 6fr",
@@ -252,11 +253,8 @@ export default class YourDashboard extends BaseDashboard {
   protected layout(): JSX.Element | undefined {
     return (
       <>
-        <SampleWidget />
-        <div>
-          <SampleWidget />
-          <SampleWidget />
-        </div>
+        <ListWidget />
+        <ChartWidget />
       </>
     );
   }

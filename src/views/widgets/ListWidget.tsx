@@ -13,7 +13,7 @@ interface IListWidgetState {
 /**
  * Extends the Widget class to implement a list widget.
  */
-export class ListWidget extends BaseWidget<any, IListWidgetState> {
+export default class ListWidget extends BaseWidget<any, IListWidgetState> {
   /**
    * Get data required by the widget, you can get data from a api call or static data stored in a file.
    * @returns The data required by the widget to render.
