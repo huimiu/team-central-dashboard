@@ -1,4 +1,4 @@
-import { mergeStyles, mergeStyleSets } from "@fluentui/react";
+import { mergeStyleSets } from "@fluentui/react";
 import { tokens } from "@fluentui/react-components";
 
 export const bodyStyle = mergeStyleSets({

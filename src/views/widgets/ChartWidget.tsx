@@ -67,6 +67,7 @@ export default class ChartWidget extends BaseWidget<any, IChartWidgetState> {
             this.state.timeRange.map((t: TimeModel, i) => {
               return (
                 <ToggleButton
+                  key={`tb-time-range-${i}`}
                   appearance="transparent"
                   checked={this.state.selectedRange === t.range}
                   onClick={() =>
