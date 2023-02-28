@@ -27,25 +27,16 @@ interface IChartWidgetState {
   timeRange: TimeModel[];
 }
 
+/**
+ * Inherit the BaseWidget class to implement a chart widget.
+ */
 export default class ChartWidget extends BaseWidget<any, IChartWidgetState> {
   async getData(): Promise<IChartWidgetState> {
-    const chartPoints = [
-      {
-        legend: "Line 1",
-        data: chart1Points_7D,
-        color: "#6264A7",
-      },
-      {
-        legend: "Line 2",
-        data: chart2Points_7D,
-        color: "#D9DBDB",
-      },
-    ];
-    const chartData = {
-      chartTitle: "Area chart multiple example",
-      lineChartData: chartPoints,
+    return {
+      selectedRange: DayRange.Seven,
+      chartProps: this.retriveChartsData(DayRange.Seven),
+      timeRange: getTimeRange(),
     };
-    return { selectedRange: DayRange.Seven, chartProps: chartData, timeRange: getTimeRange() };
   }
 
   header(): JSX.Element | undefined {
@@ -87,9 +78,7 @@ export default class ChartWidget extends BaseWidget<any, IChartWidgetState> {
           {this.state.chartProps && (
             <AreaChart
               data={this.state.chartProps}
-              legendsOverflowText={"Overflow Items"}
               yAxisTickFormat={d3.format(".1s")}
-              wrapXAxisLables={false}
               legendProps={{
                 allowFocusOnLegends: true,
               }}

@@ -6,7 +6,6 @@ export const bodyStyle = mergeStyleSets({
     display: "grid",
     gridTemplateColumns: "repeat(3, max-content)",
     gap: "1rem",
-    minWidth: "27rem",
     "& button": {
       fontSize: tokens.fontSizeBase100,
       lineHeight: tokens.lineHeightBase100,

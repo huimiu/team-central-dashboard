@@ -11,7 +11,7 @@ interface IListWidgetState {
 }
 
 /**
- * Extends the Widget class to implement a list widget.
+ * Inherit the BaseWidget class to implement a list widget.
  */
 export default class ListWidget extends BaseWidget<any, IListWidgetState> {
   /**

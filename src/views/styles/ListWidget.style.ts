@@ -5,7 +5,7 @@ export const bodyStyle = mergeStyles({
   display: "grid",
   gap: "0.5rem",
   alignContent: "start",
-  minWidth: "18rem",
+  minWidth: "13.5rem",
   "& div": {
     display: "grid",
   },
