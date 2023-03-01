@@ -242,7 +242,7 @@ export default class YourDashboard extends BaseDashboard<any, any> {}
 
 ### Step 2: Override methods to customize dashboard layout
 
-Dashboard class provides some methods that you can override to customize the dashboard layout. The following table lists the methods that you can override.
+The `BaseDashboard` class provides some methods that you can override to customize the dashboard layout. The following table lists the methods that you can override.
 
 | Methods     | Function                             |
 | ----------- | ------------------------------------ |
