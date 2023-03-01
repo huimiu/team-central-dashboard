@@ -52,7 +52,9 @@ This app also supported teams different themes, including dark theme and high co
 
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16, 18
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli). If you are using Teams Toolkit Visual Studio Code Extension, please make sure you have installed the pre-release version, you can switch to pre-release version by clicking the switch button in the Teams Toolkit VS Code extension page, or you can install the pre-release version from [here](https://marketplace.visualstudio.com/_apis/public/gallery/publishers/TeamsDevApp/vsextensions/ms-teams-vscode-extension/4.99.2023022208/vspackage).
+
+![](./public/switch-to-pre-release.png)
 
 ### Try it out
 
