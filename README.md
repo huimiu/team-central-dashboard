@@ -18,9 +18,19 @@ The changes in this pre-release require upgrades to the TeamsFx configuration fi
 
 Learn more about the changes in this pre-release at [https://aka.ms/teamsfx-v5.0-guide](https://aka.ms/teamsfx-v5.0-guide).
 
-# Dashboard Tab
+# Table of Contents
 
-## Introduction
+1. [Introduction](#introduction)
+2. [Getting Started](#getting-started)
+   - [Prerequisites](#prerequisites)
+   - [Try it out](#try-it-out)
+3. [Understanding the code](#understanding-the-code)
+4. [How to add a new widget](#how-to-add-a-new-widget)
+5. [How to add a new dashboard](#how-to-add-a-new-dashboard)
+6. [How to add a new graph api call](#how-to-add-a-new-graph-api-call)
+7. [Additional Resources](#additional-resources)
+
+# Introduction
 
 This is a Teams tab app that uses the [Fluent UI](https://react.fluentui.dev/?path=/docs/concepts-introduction--page) to display multiple cards that provide an overview of data or content in Microsoft Teams.
 
@@ -36,19 +46,19 @@ This app also supported teams different themes, including dark theme and high co
 | :------------------------------: | :----------------------------: |
 | ![](./public/dashboard-dark.png) | ![](./public/dashboard-hc.png) |
 
-## Prerequisites
+# Getting Started
+
+### Prerequisites
 
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16, 18
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
-## Getting Started
+### Try it out
 
 Run your app with local debugging by pressing `F5` in VSCode. Select `Debug (Edge)` or `Debug (Chrome)`.
 
-**Congratulations**! You are running an application that can now show a dashboard in Teams.
-
-## Understanding the code
+# Understanding the code
 
 This section walks through the generated code. The project folder contains the following:
 
@@ -87,7 +97,7 @@ The following files are project-related files. You generally will not need to cu
 | `src/internal/login.ts`            | Implementation of login                                      |
 | `src/internal/singletonContext.ts` | Implementation of the TeamsUserCredential instance singleton |
 
-## How to add a new widget
+# How to add a new widget
 
 You can use the following steps to add a new widget to the dashboard:
 
@@ -213,7 +223,7 @@ protected dashboardLayout(): JSX.Element | undefined {
 }
 ```
 
-## How to add a new dashboard
+# How to add a new dashboard
 
 You can use the following steps to add a new dashboard layout:
 
@@ -296,14 +306,14 @@ Open the [`appPackage/manifest.json`](appPackage/manifest.json) file, and add a 
 }
 ```
 
-## How to add a new Graph API call
+# How to add a new Graph API call
 
 Please follow these two steps:
 
 1. Add SSO: Refer to How-to guides in Teams Toolkit by clicking Teams Toolkit in the side bar > `View how-to guides` > `Develop single sign-on experience in Teams`.
 2. Refer to [this document](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/teamsfx-sdk#microsoft-graph-scenarios:~:text=caught%20and%20transformed.-,Microsoft%20Graph%20Scenarios,-This%20section%20provides) to call a Graph API via TeamsFx SDK.
 
-## Additional resources
+# Additional resources
 
 - [Fluent UI](https://react.fluentui.dev/?path=/docs/concepts-introduction--page)
 - [Fluent UI React Charting Example](https://fluentuipr.z22.web.core.windows.net/heads/master/react-charting/demo/index.html#/)
