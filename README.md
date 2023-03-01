@@ -22,8 +22,8 @@ Learn more about the changes in this pre-release at [https://aka.ms/teamsfx-v5.0
 
 1. [Introduction](#introduction)
 2. [Getting Started](#getting-started)
-   - [Prerequisites](#prerequisites)
-   - [Try it out](#try-it-out)
+   * [Prerequisites](#prerequisites)
+   * [Try it out](#try-it-out)
 3. [Understanding the code](#understanding-the-code)
 4. [How to add a new widget](#how-to-add-a-new-widget)
 5. [How to add a new dashboard](#how-to-add-a-new-dashboard)
@@ -315,5 +315,5 @@ Please follow these two steps:
 
 # Additional resources
 
-- [Fluent UI](https://react.fluentui.dev/?path=/docs/concepts-introduction--page)
+- [Fluent UI React V9](https://react.fluentui.dev/?path=/docs/concepts-introduction--page)
 - [Fluent UI React Charting Example](https://fluentuipr.z22.web.core.windows.net/heads/master/react-charting/demo/index.html#/)
