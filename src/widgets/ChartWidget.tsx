@@ -7,18 +7,10 @@ import {
   DataPie24Regular,
   MoreHorizontal32Regular,
 } from "@fluentui/react-icons";
-import { BaseWidget } from "@microsoft/teamsfx-react";
+import { BaseWidget, IWidgetClassNames } from "@microsoft/teamsfx-react";
 
-import { DayRange, TimeModel } from "../../models/chartModel";
-import {
-  chart1Points_30D,
-  chart1Points_60D,
-  chart1Points_7D,
-  chart2Points_30D,
-  chart2Points_60D,
-  chart2Points_7D,
-  getTimeRange,
-} from "../../services/chartService";
+import { DayRange, TimeModel } from "../models/chartModel";
+import { getChart1Points, getChart2Points, getTimeRange } from "../services/chartService";
 import { bodyStyle, footerStyle } from "../styles/ChartWidget.style";
 
 interface IChartWidgetState {
@@ -79,6 +71,7 @@ export default class ChartWidget extends BaseWidget<any, IChartWidgetState> {
             <AreaChart
               data={this.state.chartProps}
               yAxisTickFormat={d3.format(".1s")}
+              wrapXAxisLables={false}
               legendProps={{
                 allowFocusOnLegends: true,
               }}
@@ -92,7 +85,6 @@ export default class ChartWidget extends BaseWidget<any, IChartWidgetState> {
   footer(): JSX.Element | undefined {
     return (
       <Button
-        className={footerStyle}
         appearance="transparent"
         icon={<ArrowRight16Filled />}
         iconPosition="after"
@@ -103,31 +95,26 @@ export default class ChartWidget extends BaseWidget<any, IChartWidgetState> {
     );
   }
 
+  styling(): IWidgetClassNames {
+    return {
+      footer: footerStyle,
+    };
+  }
+
   private retriveChartsData(r: DayRange): IChartProps {
     const chartPoints = [
       {
         legend: "Line 1",
-        data:
-          r === DayRange.Seven
-            ? chart1Points_7D
-            : r === DayRange.Thirty
-            ? chart1Points_30D
-            : chart1Points_60D,
+        data: getChart1Points(r),
         color: "#6264A7",
       },
       {
         legend: "Line 2",
-        data:
-          r === DayRange.Seven
-            ? chart2Points_7D
-            : r === DayRange.Thirty
-            ? chart2Points_30D
-            : chart2Points_60D,
+        data: getChart2Points(r),
         color: "#D9DBDB",
       },
     ];
     const chartData = {
-      chartTitle: "Area chart multiple example",
       lineChartData: chartPoints,
     };
     return chartData;

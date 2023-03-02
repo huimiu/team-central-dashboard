@@ -6,7 +6,7 @@ export const bodyStyle = mergeStyleSets({
     display: "grid",
     gridTemplateColumns: "repeat(3, max-content)",
     gap: "1rem",
-    "& button": {
+    button: {
       fontSize: tokens.fontSizeBase100,
       lineHeight: tokens.lineHeightBase100,
     },
@@ -15,9 +15,20 @@ export const bodyStyle = mergeStyleSets({
     position: "relative",
     height: "200px",
     width: "100%",
+    ".tick text": {
+      fill: tokens.colorNeutralForeground1,
+    },
+    "& div": {
+      color: tokens.colorNeutralForeground1,
+    },
+    "& line": {
+      stroke: tokens.colorNeutralStroke2,
+    },
   },
 });
 
 export const footerStyle = mergeStyles({
-  color: "var(--colorBrandForeground1) !important",
+  button: {
+    color: tokens.colorBrandForeground1,
+  },
 });

@@ -2,8 +2,8 @@ import { Button, Text } from "@fluentui/react-components";
 import { List28Filled, MoreHorizontal32Regular } from "@fluentui/react-icons";
 import { BaseWidget } from "@microsoft/teamsfx-react";
 
-import { ListModel } from "../../models/listModel";
-import { getListData } from "../../services/listService";
+import { ListModel } from "../models/listModel";
+import { getListData } from "../services/listService";
 import { bodyStyle } from "../styles/ListWidget.style";
 
 interface IListWidgetState {
