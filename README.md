@@ -22,11 +22,18 @@ Learn more about the changes in this pre-release at [https://aka.ms/teamsfx-v5.0
 
 1. [Introduction](#introduction)
 2. [Getting Started](#getting-started)
-   * [Prerequisites](#prerequisites)
-   * [Try it out](#try-it-out)
+
+- [Prerequisites](#prerequisites)
+- [Try it out](#try-it-out)
+
 3. [Understanding the code](#understanding-the-code)
 4. [How to add a new widget](#how-to-add-a-new-widget)
 5. [How to add a new dashboard](#how-to-add-a-new-dashboard)
+6. [How to override the default style](#how-to-override-the-default-style)
+
+- [Override the default style for the widget](#override-the-default-style-for-the-widget)
+- [Override the default style for the dashboard](#override-the-default-style-for-the-dashboard)
+
 6. [How to add a new graph api call](#how-to-add-a-new-graph-api-call)
 7. [Additional Resources](#additional-resources)
 
@@ -74,19 +81,19 @@ This section walks through the generated code. The project folder contains the f
 
 The following files provide the business logic for the dashboard tab. These files can be updated to fit your business logic requirements. The default implementation provides a starting point to help you get started.
 
-| File                                         | Contents                                           |
-| -------------------------------------------- | -------------------------------------------------- |
-| `src/data/ListData.json`                     | Data for the list widget                           |
-| `src/models/chartModel.ts`                   | Data model for the chart widget                    |
-| `src/models/listModel.ts`                    | Data model for the list widget                     |
-| `src/services/chartService.ts`               | A data retrive implementation for the chart widget |
-| `src/services/listService.ts`                | A data retrive implementation for the list widget  |
-| `src/views/dashboards/SampleDashboard.tsx`   | A sample dashboard layout implementation           |
-| `src/views/styles/ChartWidget.styles.ts`     | The chart widget style file                        |
-| `src/views/styles/ListWidget.styles.ts`      | The list widget style file                         |
-| `src/views/styles/SampleDashboard.styles.ts` | The sample dashboard style file                    |
-| `src/views/widgets/ChartWidget.tsx`          | A widget implementation that can display a chart   |
-| `src/views/widgets/ListWidget.tsx`           | A widget implementation that can display a list    |
+| File                                   | Contents                                           |
+| -------------------------------------- | -------------------------------------------------- |
+| `src/data/ListData.json`               | Data for the list widget                           |
+| `src/models/chartModel.ts`             | Data model for the chart widget                    |
+| `src/models/listModel.ts`              | Data model for the list widget                     |
+| `src/services/chartService.ts`         | A data retrive implementation for the chart widget |
+| `src/services/listService.ts`          | A data retrive implementation for the list widget  |
+| `src/dashboards/SampleDashboard.tsx`   | A sample dashboard layout implementation           |
+| `src/styles/ChartWidget.styles.ts`     | The chart widget style file                        |
+| `src/styles/ListWidget.styles.ts`      | The list widget style file                         |
+| `src/styles/SampleDashboard.styles.ts` | The sample dashboard style file                    |
+| `src/widgets/ChartWidget.tsx`          | A widget implementation that can display a chart   |
+| `src/widgets/ListWidget.tsx`           | A widget implementation that can display a list    |
 
 The following files are project-related files. You generally will not need to customize these files.
 
@@ -143,7 +150,7 @@ export const getSampleData = (): SampleModel => SampleData;
 
 ### Step 3: Create a widget file
 
-Create a widget file in `src/views/widgets` folder. Inherit the `BaseWidget` class from [@microsoft/teamsfx-react](https://www.npmjs.com/package/@microsoft/teamsfx-react/v/3.0.1-alpha.ru6q1vrv0.0). The following table lists the methods that you can override to customize your widget.
+Create a widget file in `src/widgets` folder. Inherit the `BaseWidget` class from [@microsoft/teamsfx-react](https://www.npmjs.com/package/@microsoft/teamsfx-react/v/3.0.1-alpha.ru6q1vrv0.0). The following table lists the methods that you can override to customize your widget.
 
 | Methods     | Function                                                                                                                                      |
 | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -160,8 +167,8 @@ Here's a sample widget implementation:
 ```tsx
 import { Button, Text } from "@fluentui/react-components";
 import { BaseWidget } from "@microsoft/teamsfx-react";
-import { SampleModel } from "../../models/sampleModel";
-import { getSampleData } from "../../services/sampleService";
+import { SampleModel } from "../models/sampleModel";
+import { getSampleData } from "../services/sampleService";
 
 interface SampleWidgetState {
   data?: SampleModel;
@@ -188,7 +195,7 @@ export class SampleWidget extends BaseWidget<any, SampleWidgetState> {
 
 ### Step 4: Add the widget to the dashboard
 
-1. Go to `src/views/dashboards/SampleDashboard.tsx`, if you want create a new dashboard, please refer to [How to add a new dashboard](#how-to-add-a-new-dashboard).
+1. Go to `src/dashboards/SampleDashboard.tsx`, if you want create a new dashboard, please refer to [How to add a new dashboard](#how-to-add-a-new-dashboard).
 2. Update your `layout()` method to add the widget to the dashboard:
 
 ```tsx
@@ -236,7 +243,7 @@ You can use the following steps to add a new dashboard layout:
 
 ### Step 1: Create a dashboard class
 
-Create a file with the extension `.tsx` for your dashboard in the `src/views/dashboards` directory, for example, `YourDashboard.tsx`. Then, define a class that inherits the `BaseDashboard` class from [@microsoft/teamsfx-react](https://www.npmjs.com/package/@microsoft/teamsfx-react/v/3.0.1-alpha.ru6q1vrv0.0).
+Create a file with the extension `.tsx` for your dashboard in the `src/dashboards` directory, for example, `YourDashboard.tsx`. Then, define a class that inherits the `BaseDashboard` class from [@microsoft/teamsfx-react](https://www.npmjs.com/package/@microsoft/teamsfx-react/v/3.0.1-alpha.ru6q1vrv0.0).
 
 ```tsx
 export default class YourDashboard extends BaseDashboard<any, any> {}
@@ -254,14 +261,13 @@ The `BaseDashboard` class provides some methods that you can override to customi
 Here is an example to customize the dashboard layout.
 
 ```tsx
-import { CSSProperties } from "react";
 import { mergeStyles } from "@fluentui/react";
 import { BaseDashboard } from "@microsoft/teamsfx-react";
 import ListWidget from "../widgets/ListWidget";
 import ChartWidget from "../widgets/ChartWidget";
 
 export default class YourDashboard extends BaseDashboard<any, any> {
-  protected styling(): CSSProperties | string {
+  protected styling(): string {
     return mergeStyles({
       gridTemplateColumns: "4fr 6fr",
     });
@@ -285,7 +291,7 @@ export default class YourDashboard extends BaseDashboard<any, any> {
 Open the `src/App.tsx` file, and add a route for the new dashboard. Here is an example:
 
 ```tsx
-import YourDashboard from "./views/dashboards/YourDashboard";
+import YourDashboard from "./dashboards/YourDashboard";
 
 export default function App() {
   ...
@@ -306,6 +312,120 @@ Open the [`appPackage/manifest.json`](appPackage/manifest.json) file, and add a 
   "websiteUrl": "${{TAB_ENDPOINT}}/index.html#/yourdashboard",
   "scopes": ["personal"]
 }
+```
+
+# How to override the default style
+
+The Teams Toolkit provides some default styles for the dashboard and widget. You can customize the default style by overriding the `styling()` method in your dashboard or widget class.
+
+## Override the default style for the widget
+
+The `styling()` method in `BaseWidget` returns a `IWidgetClassNames` object that contains the following properties:
+
+<table>
+<tr>
+<td> Property </td> <td> Meaning </td> <td> Default value </td>
+</tr>
+<tr>
+<td> root </td> <td> The style of the dashboard or widget container. </td> <td>
+
+```ts
+{
+  display: "grid",
+  padding: "1.25rem 2rem 1.25rem 2rem",
+  backgroundColor: tokens.colorNeutralBackground1,
+  border: "1px solid var(--colorTransparentStroke)",
+  boxShadow: tokens.shadow4,
+  borderRadius: tokens.borderRadiusMedium,
+  gap: tokens.spacingHorizontalL,
+  gridTemplateRows: "max-content 1fr max-content"
+}
+```
+
+</td>
+</tr>
+<tr>
+<td> header </td> <td> The style of the header. </td> <td>
+
+```ts
+{
+  display: "grid",
+  height: "max-content",
+  "& div": {
+    display: "grid",
+    gap: tokens.spacingHorizontalS,
+    alignItems: "center",
+    gridTemplateColumns: "min-content 1fr min-content",
+  },
+  "& svg": {
+    height: "1.5rem",
+    width: "1.5rem",
+  },
+  "& span": {
+    fontWeight: tokens.fontWeightSemibold,
+    lineHeight: tokens.lineHeightBase200,
+    fontSize: tokens.fontSizeBase200,
+  }
+}
+```
+
+</td>
+</tr>
+<tr>
+<td> body </td> <td> The style of the body. </td> <td> none </td>
+</tr>
+<tr>
+<td> footer </td> <td> The style of the footer. </td> <td>
+
+```ts
+  "& button": {
+    width: "fit-content",
+  }
+```
+
+</td>
+
+</table>
+
+> Note: You can refer the [design tokens](https://react.fluentui.dev/?path=/docs/concepts-migration-getting-started--page#design-tokens) document from Fluent UI to learn more about `tokens`.
+
+Each property can receive a string which is a css class name. You can use the [mergeStyles()](https://github.com/microsoft/fluentui/blob/master/packages/merge-styles/README.md) method from the `@fluentui/react` package to generate css classes. Here is an example:
+
+```tsx
+  styling(): IWidgetClassNames {
+    return {
+      footer: mergeStyles({
+        "& button": {
+          color: tokens.colorBrandForeground1,
+        },
+      }),
+    };
+  }
+```
+
+## Override the default style for the dashboard
+
+The Teams Toolkit provides a default style for the dashboard. The default style is as follows:
+
+```ts
+  display: "grid",
+  gap: "20px",
+  padding: "20px",
+  gridTemplateRows: "1fr",
+  gridTemplateColumns: "4fr 6fr",
+  ...(isMobile === true ? { gridTemplateColumns: "1fr", gridTemplateRows: "1fr" } : {}),
+```
+
+> Note: The `isMobile` variable is a boolean value that indicates whether the dashboard is displayed on a mobile device. You can use this value like `this.state.isMobile` in your dashboard class to customize the style for mobile devices. We assume that the dashboard is displayed on a mobile device if the screen width is less than 600px.
+
+The `styling()` method in `BaseDashboard` returns a string which is also a css class name. Here is an example:
+
+```tsx
+  styling(): string {
+    return mergeStyles({
+      gridTemplateColumns: "6fr 4fr",
+    });
+  }
 ```
 
 # How to add a new Graph API call

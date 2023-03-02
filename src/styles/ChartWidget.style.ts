@@ -28,7 +28,7 @@ export const bodyStyle = mergeStyleSets({
 });
 
 export const footerStyle = mergeStyles({
-  button: {
+  "& button": {
     color: tokens.colorBrandForeground1,
   },
 });
