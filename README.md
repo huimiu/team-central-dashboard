@@ -41,7 +41,7 @@ This is a Teams tab app that uses the [Fluent UI](https://react.fluentui.dev/?pa
 
 When you open this app in mobile Teams, it will automatically switch to a mobile-friendly layout.
 
-<img src="public/dashboard-mobile.png" style="zoom: 10%" />
+![Mobile layout](./public/dashboard-mobile.png)
 
 This app also supported teams different themes, including dark theme and high contrast theme.
 
