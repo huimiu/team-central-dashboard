@@ -50,6 +50,8 @@ This app also supported teams different themes, including dark theme and high co
 | :------------------------------: | :----------------------------: |
 | ![](./public/dashboard-dark.png) | ![](./public/dashboard-hc.png) |
 
+<p align="right"><a href="#table-of-contents">back to top</a></p>
+
 # Getting Started
 
 ### Prerequisites
@@ -64,7 +66,9 @@ This app also supported teams different themes, including dark theme and high co
 
 Run your app with local debugging by pressing `F5` in VSCode. Select `Debug (Edge)` or `Debug (Chrome)`.
 
-# Understanding the code
+<p align="right"><a href="#table-of-contents">back to top</a></p>
+
+# Understanding the Code
 
 This section walks through the generated code. The project folder contains the following:
 
@@ -103,7 +107,9 @@ The following files are project-related files. You generally will not need to cu
 | `src/internal/login.ts`            | Implementation of login                                      |
 | `src/internal/singletonContext.ts` | Implementation of the TeamsUserCredential instance singleton |
 
-# How to add a new widget
+<p align="right"><a href="#table-of-contents">back to top</a></p>
+
+# How to Add a New Widget
 
 You can use the following steps to add a new widget to the dashboard:
 
@@ -229,6 +235,8 @@ protected dashboardLayout(): JSX.Element | undefined {
 }
 ```
 
+<p align="right"><a href="#table-of-contents">back to top</a></p>
+
 # How to add a new dashboard
 
 You can use the following steps to add a new dashboard layout:
@@ -311,7 +319,9 @@ Open the [`appPackage/manifest.json`](appPackage/manifest.json) file, and add a 
 }
 ```
 
-# How to override the default style
+<p align="right"><a href="#table-of-contents">back to top</a></p>
+
+# How to Override the Default Style
 
 The Teams Toolkit provides some default styles for the dashboard and widget. You can customize the default style by overriding the `styling()` method in your dashboard or widget class.
 
@@ -425,18 +435,26 @@ The `styling()` method in `BaseDashboard` returns a string which is also a css c
   }
 ```
 
-# How to add a new Graph API call
+<p align="right"><a href="#table-of-contents">back to top</a></p>
+
+# How to Add a New Graph API Call
 
 Please follow these two steps:
 
 1. Add SSO: Refer to How-to guides in Teams Toolkit by clicking Teams Toolkit in the side bar > `View how-to guides` > `Develop single sign-on experience in Teams`.
 2. Refer to [this document](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/teamsfx-sdk#microsoft-graph-scenarios:~:text=caught%20and%20transformed.-,Microsoft%20Graph%20Scenarios,-This%20section%20provides) to call a Graph API via TeamsFx SDK.
 
-# API documentation
+<p align="right"><a href="#table-of-contents">back to top</a></p>
+
+# API Documentation
 
 You can find the API documentation [here](/doc/index.md).
 
-# Additional resources
+<p align="right"><a href="#table-of-contents">back to top</a></p>
+
+# Additional Resources
 
 - [Fluent UI React V9](https://react.fluentui.dev/?path=/docs/concepts-introduction--page)
 - [Fluent UI React Charting Example](https://fluentuipr.z22.web.core.windows.net/heads/master/react-charting/demo/index.html#/)
+
+<p align="right"><a href="#table-of-contents">back to top</a></p>
