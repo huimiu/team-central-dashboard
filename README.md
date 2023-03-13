@@ -31,7 +31,8 @@ Learn more about the changes in this pre-release at [https://aka.ms/teamsfx-v5.0
    * [Override the default style for the widget](#override-the-default-style-for-the-widget)
    * [Override the default style for the dashboard](#override-the-default-style-for-the-dashboard)
 7. [How to add a new graph api call](#how-to-add-a-new-graph-api-call)
-8. [Additional Resources](#additional-resources)
+8. [API Documentation](#api-documentation)
+9. [Additional Resources](#additional-resources)
 
 # Introduction
 
@@ -430,6 +431,10 @@ Please follow these two steps:
 
 1. Add SSO: Refer to How-to guides in Teams Toolkit by clicking Teams Toolkit in the side bar > `View how-to guides` > `Develop single sign-on experience in Teams`.
 2. Refer to [this document](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/teamsfx-sdk#microsoft-graph-scenarios:~:text=caught%20and%20transformed.-,Microsoft%20Graph%20Scenarios,-This%20section%20provides) to call a Graph API via TeamsFx SDK.
+
+# API documentation
+
+You can find the API documentation [here](/doc/index.md).
 
 # Additional resources
 
