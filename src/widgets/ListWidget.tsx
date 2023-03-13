@@ -1,31 +1,48 @@
-import { Button, Text } from "@fluentui/react-components";
+import { mergeStyles } from "@fluentui/react";
+import { Button, Spinner, Text, tokens } from "@fluentui/react-components";
 import { List28Filled, MoreHorizontal32Regular } from "@fluentui/react-icons";
 import { BaseWidget } from "@microsoft/teamsfx-react";
 
 import { ListModel } from "../models/listModel";
 import { getListData } from "../services/listService";
-import { bodyStyle } from "../styles/ListWidget.style";
+
+const bodyStyle = mergeStyles({
+  display: "grid",
+  gap: "0.5rem",
+  alignContent: "start",
+  minWidth: "13.5rem",
+  "& div": {
+    display: "grid",
+  },
+  "& .divider": {
+    margin: "0 -2rem 0.5rem",
+    height: "1px",
+    background: tokens.colorNeutralStroke2,
+  },
+  "& .title": {
+    fontWeight: tokens.fontWeightSemibold,
+  },
+  "& .content": {
+    fontSize: tokens.fontSizeBase200,
+  },
+});
+
+const loadingStyle = mergeStyles({
+  display: "grid",
+  justifyContent: "center",
+  height: "100%",
+});
 
 interface IListWidgetState {
   data: ListModel[];
 }
 
-/**
- * Inherit the BaseWidget class to implement a list widget.
- */
 export default class ListWidget extends BaseWidget<any, IListWidgetState> {
-  /**
-   * Get data required by the widget, you can get data from a api call or static data stored in a file.
-   * @returns The data required by the widget to render.
-   */
   async getData(): Promise<IListWidgetState> {
+    await new Promise((f) => setTimeout(f, 1500));
     return { data: getListData() };
   }
 
-  /**
-   * Define the widget header.
-   * @returns The header content, all ReactNode types are supported.
-   */
   header(): JSX.Element | undefined {
     return (
       <div>
@@ -36,10 +53,6 @@ export default class ListWidget extends BaseWidget<any, IListWidgetState> {
     );
   }
 
-  /**
-   * Define the widget body.
-   * @returns The body content, all JSX.Element types are supported.
-   */
   body(): JSX.Element | undefined {
     return (
       <div className={bodyStyle}>
@@ -61,15 +74,19 @@ export default class ListWidget extends BaseWidget<any, IListWidgetState> {
     );
   }
 
-  /**
-   * Define the widget footer.
-   * @returns The footer content, all ReactNode types are supported.
-   */
   footer(): JSX.Element | undefined {
     return (
       <Button appearance="primary" size="medium">
         View Details
       </Button>
+    );
+  }
+
+  protected loading(): JSX.Element | undefined {
+    return (
+      <div className={loadingStyle}>
+        <Spinner label="Loading..." labelPosition="below" />
+      </div>
     );
   }
 }

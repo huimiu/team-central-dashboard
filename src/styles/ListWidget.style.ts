@@ -21,3 +21,9 @@ export const bodyStyle = mergeStyles({
     fontSize: tokens.fontSizeBase200,
   },
 });
+
+export const loadingStyle = mergeStyles({
+  display: "grid",
+  justifyContent: "center",
+  height: "100%",
+});
