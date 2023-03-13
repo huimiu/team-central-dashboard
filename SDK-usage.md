@@ -2,7 +2,7 @@
 
 ## BaseWidget
 
-Create a widget file in `src/widgets` folder. Inherit the `BaseWidget` class from [@microsoft/teamsfx-react](https://www.npmjs.com/package/@microsoft/teamsfx-react/v/3.0.1-alpha.ru6q1vrv0.0). The following table lists the methods that you can override to customize your widget.
+This class is the base class provides basic functionality to create a widget. The following table lists the methods that you can override to customize your widget.
 
 | Methods     | Function                                                                                                                                      |
 | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10,9 +10,12 @@ Create a widget file in `src/widgets` folder. Inherit the `BaseWidget` class fro
 | `header()`  | Customize the content of the widget header                                                                                                    |
 | `body()`    | Customize the content of the widget body                                                                                                      |
 | `footer()`  | Customize the content of the widget footer                                                                                                    |
+| `loading()` | Define the content to display while the widget is loading                                                                                     |
 | `styling()` | Customize the widget style                                                                                                                    |
 
-> All methods are optional. If you do not override any method, the default widget layout will be used.
+### getData()
+
+The method returns a `Promise` object that contains the data. The data can be any type but it should be same as the state type statemented in the class definition.
 
 Here's a sample widget implementation:
 
