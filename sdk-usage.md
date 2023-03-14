@@ -1,5 +1,13 @@
 # SDK Usage
 
+[TeamsFx SDK](https://www.npmjs.com/package/@microsoft/teamsfx-react/v/3.0.1-alpha.ru6q1vrv1.0) provides a set of classes and methods to help you build Teams dashboard apps.
+
+You can use the SDK by importing the following package in your project:
+
+```shell
+npm i @microsoft/teamsfx-react@3.0.1-alpha.ru6q1vrv1.0
+```
+
 ## Table of Contents
 
 - [BaseWidget](#basewidget)
