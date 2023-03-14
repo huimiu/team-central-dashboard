@@ -31,7 +31,7 @@ Learn more about the changes in this pre-release at [https://aka.ms/teamsfx-v5.0
    - [Override the default style for the widget](#override-the-default-style-for-the-widget)
    - [Override the default style for the dashboard](#override-the-default-style-for-the-dashboard)
 7. [How to Add a New Graph Api Call](#how-to-add-a-new-graph-api-call)
-8. [API Documentation](./doc/index.md)
+8. [API Reference](./doc/index.md)
 9. [SDK Usage](./sdk-usage.md)
 
 # Introduction
