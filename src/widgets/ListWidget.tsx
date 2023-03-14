@@ -56,16 +56,15 @@ export default class ListWidget extends BaseWidget<any, IListWidgetState> {
   body(): JSX.Element | undefined {
     return (
       <div className={bodyStyle}>
-        {this.state.data &&
-          this.state.data.map((t: ListModel) => {
-            return (
-              <div key={`${t.id}-div`}>
-                <div className="divider" />
-                <Text className="title">{t.title}</Text>
-                <Text className="content">{t.content}</Text>
-              </div>
-            );
-          })}
+        {this.state.data.map((t: ListModel) => {
+          return (
+            <div key={`${t.id}-div`}>
+              <div className="divider" />
+              <Text className="title">{t.title}</Text>
+              <Text className="content">{t.content}</Text>
+            </div>
+          );
+        })}
       </div>
     );
   }
