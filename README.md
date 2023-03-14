@@ -22,17 +22,18 @@ Learn more about the changes in this pre-release at [https://aka.ms/teamsfx-v5.0
 
 1. [Introduction](#introduction)
 2. [Getting Started](#getting-started)
-    * [Prerequisites](#prerequisites)
-    * [Try it out](#try-it-out)
+   - [Prerequisites](#prerequisites)
+   - [Try it out](#try-it-out)
 3. [Understanding the Code](#understanding-the-code)
 4. [How to Add a New Widget](#how-to-add-a-new-widget)
 5. [How to Add a New Dashboard](#how-to-add-a-new-dashboard)
 6. [How to Override the Default Style](#how-to-override-the-default-style)
-   * [Override the default style for the widget](#override-the-default-style-for-the-widget)
-   * [Override the default style for the dashboard](#override-the-default-style-for-the-dashboard)
+   - [Override the default style for the widget](#override-the-default-style-for-the-widget)
+   - [Override the default style for the dashboard](#override-the-default-style-for-the-dashboard)
 7. [How to Add a New Graph Api Call](#how-to-add-a-new-graph-api-call)
-8. [API Documentation](#api-documentation)
-9. [Additional Resources](#additional-resources)
+8. [API Documentation](./doc/index.md)
+9. [SDK Usage](./sdk-usage.md)
+10. [Additional Resources](#additional-resources)
 
 # Introduction
 
