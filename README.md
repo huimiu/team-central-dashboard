@@ -33,7 +33,6 @@ Learn more about the changes in this pre-release at [https://aka.ms/teamsfx-v5.0
 7. [How to Add a New Graph Api Call](#how-to-add-a-new-graph-api-call)
 8. [API Documentation](./doc/index.md)
 9. [SDK Usage](./sdk-usage.md)
-10. [Additional Resources](#additional-resources)
 
 # Introduction
 
@@ -444,18 +443,5 @@ Please follow these two steps:
 
 1. Add SSO: Refer to How-to guides in Teams Toolkit by clicking Teams Toolkit in the side bar > `View how-to guides` > `Develop single sign-on experience in Teams`.
 2. Refer to [this document](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/teamsfx-sdk#microsoft-graph-scenarios:~:text=caught%20and%20transformed.-,Microsoft%20Graph%20Scenarios,-This%20section%20provides) to call a Graph API via TeamsFx SDK.
-
-<p align="right"><a href="#table-of-contents">back to top</a></p>
-
-# API Documentation
-
-You can find the API documentation [here](/doc/index.md).
-
-<p align="right"><a href="#table-of-contents">back to top</a></p>
-
-# Additional Resources
-
-- [Fluent UI React V9](https://react.fluentui.dev/?path=/docs/concepts-introduction--page)
-- [Fluent UI React Charting Example](https://fluentuipr.z22.web.core.windows.net/heads/master/react-charting/demo/index.html#/)
 
 <p align="right"><a href="#table-of-contents">back to top</a></p>
