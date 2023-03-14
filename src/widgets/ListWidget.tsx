@@ -60,13 +60,9 @@ export default class ListWidget extends BaseWidget<any, IListWidgetState> {
           this.state.data.map((t: ListModel) => {
             return (
               <div key={`${t.id}-div`}>
-                <div key={`${t.id}-divider`} className="divider" />
-                <Text key={`${t.id}-title`} className="title">
-                  {t.title}
-                </Text>
-                <Text key={`${t.id}-content`} className="content">
-                  {t.content}
-                </Text>
+                <div className="divider" />
+                <Text className="title">{t.title}</Text>
+                <Text className="content">{t.content}</Text>
               </div>
             );
           })}
@@ -75,11 +71,7 @@ export default class ListWidget extends BaseWidget<any, IListWidgetState> {
   }
 
   footer(): JSX.Element | undefined {
-    return (
-      <Button appearance="primary" size="medium">
-        View Details
-      </Button>
-    );
+    return <Button appearance="primary">View Details</Button>;
   }
 
   protected loading(): JSX.Element | undefined {
