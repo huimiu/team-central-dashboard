@@ -17,7 +17,7 @@
 
 This class is the base class provides basic functionality to create a widget. The following table lists the methods that you can override to customize your widget.
 
-| Methods     | Function                                                                                                                                      |
+| Methods     | Description                                                                                                                                   |
 | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | `getData()` | This method is used to get the data for the widget. You can implement it to get data from the backend service or from the Microsoft Graph API |
 | `header()`  | Customize the content of the widget header                                                                                                    |
@@ -65,6 +65,8 @@ class WeatherWidget extends BaseWidget<WeatherProps, WeatherData> {
   }
 }
 ```
+
+<p align="right"><a href="#table-of-contents">back to top</a></p>
 
 ### header()
 
@@ -315,7 +317,7 @@ It's important to note that the class names returned by the styling method will 
 
 This class is the base class provides basic functionality to create a dashboard. The following table lists the methods that you can override to customize your dashboard.
 
-| Methods     | Function                             |
+| Methods     | Description                          |
 | ----------- | ------------------------------------ |
 | `layout()`  | Define widgets layout                |
 | `styling()` | Customize the style of the dashboard |
